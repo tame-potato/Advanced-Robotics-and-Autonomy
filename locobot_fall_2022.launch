@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="robot_model"                       default="locobot_wx250s"/>
+
+  <include file="$(find interbotix_xslocobot_nav)/launch/xslocobot_nav.launch">
+    <arg name="robot_model"                      value="$(arg robot_model)"/>
+    <arg name="use_lidar"                        value="true"/>
+    <arg name="localization"                     value="true"/>
+    <arg name="rtabmap_args"                     value="--Rtabmap/StartNewMapOnLoopClosure true"/>
+  </include>
+  
+  <node name="controller1" pkg="interbotix_xslocobot_perception" type="locobot_routine_fall_2022.py" />
+
+</launch>
